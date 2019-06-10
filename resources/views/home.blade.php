@@ -61,6 +61,11 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            .input{
+                font-size: 40px;
+                margin-bottom: 30px;
+            }
         </style>
     </head>
     <body>
@@ -70,6 +75,11 @@
                 <div class="title m-b-md">
                     Welcome to grading calculating 
                 </div>
+
+                <div class="input">
+                    Enter your grade: <input type="number" name="grade"><br>
+                </div>
+
 
                 <div class="links">
                     <a href="/checkGrade">Click here to see your letter grade</a>
