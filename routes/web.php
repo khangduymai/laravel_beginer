@@ -25,6 +25,9 @@ route::get('/contact', function(){
 //this is good to call a single view without passing multiple data
 route::view('contact-us','contact'); 
 
+/*
+Pass data to view sample
+
 route::get('customer', function(){
 
     //create a customerList array variable
@@ -43,4 +46,14 @@ route::get('customer', function(){
         'dep' => $department
     ]);
 });
+*/
+
+route::get('customer', 'CustomersController@list');
+
+route::view('register', 'register/registerUser');
+
+
+/*
+
+*/
 

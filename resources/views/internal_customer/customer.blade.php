@@ -1,3 +1,4 @@
+<nav> <a href="/register">Register</a></nav>
 <h1>List of Internal Customers</h1>
 
 {{-- to get the variable from route we use {{$variable_name}}
