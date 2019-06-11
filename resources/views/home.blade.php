@@ -72,6 +72,7 @@
         <div class="flex-center position-ref full-height">
             
             <div class="content">
+                <!--This is using <form> and <input type submit> -->
                 <form action='/checkGrade' method='GET'>
                     <div class="title m-b-md">
                         Welcome to grading calculating 
@@ -81,12 +82,7 @@
                         Enter your grade: <input type="number" name="grade"><br>
                     </div>
 
-
-                    <div class="links">
-                        <a href="/checkGrade">Click here to see your letter grade</a>
-                    </div>
-
-                    <input type='submit' name='submit'>
+                    <input type='submit' name='submit' value="submit">
                 </form>
             </div>
             

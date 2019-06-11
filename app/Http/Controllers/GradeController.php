@@ -20,11 +20,32 @@ class GradeController extends Controller
             $letter = 'F';
         }
 
-        return view('grade/letterGrade',
-        [
-            'letterGrade' => $letter,
-            'yourScore' => $grade
-        ]);
+        return response()->json(
+            [
+                'letter' => $letter
+            ]
+        );
+    }
 
+    public function checkGradeSubmit(Request $request) {
+        // dd($request);
+        $grade = $request->query('grade');
+
+        if($grade >= 90){
+            $letter = 'A';
+        }
+        elseif($grade >= 80){
+            $letter = 'B';
+        }
+        elseif($grade >= 70){
+            $letter = 'C';
+        }
+        else{
+            $letter = 'F';
+        }
+
+        return view('grade/letterGrade', 
+            ['letterGrade' => $letter, 'yourScore' => $grade]
+        );
     }
 }
