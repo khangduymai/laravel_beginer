@@ -4,8 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
-
+        <title>Practice Form</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
@@ -48,19 +48,7 @@
                 font-size: 84px;
             }
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
+           
 
             .input{
                 font-size: 40px;
@@ -72,19 +60,21 @@
         <div class="flex-center position-ref full-height">
             
             <div class="content">
-                <!--This is using <form> and <input type submit> -->
-                <form action='/checkGrade' method='POST'>
-                    <!--using @csrf for POST method -->
-                    @csrf
-                    <div class="title m-b-md">
-                        Welcome to grading calculating 
+
+                <form action="/displayInfo" method="post">
+                    <h1>PLEASE SIGN IN</h1>
+                     @csrf;
+                    <div class="form-group">
+                        <label for="email">Email address:</label>
+                        <input type="email" class="form-control" id="email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Password:</label>
+                        <input type="password" class="form-control" id="pwd" name="password">
                     </div>
 
-                    <div class="input">
-                        Enter your grade: <input type="text" name="grade"><br>
-                    </div>
+                    <button type="submit" name="submit" class="btn btn-primary">Submit</button>
 
-                    <input type='submit' class='btn btn-danger' name='submit' value="submit">
                 </form>
             </div>
             

@@ -48,15 +48,6 @@
                 font-size: 84px;
             }
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
 
             .m-b-md {
                 margin-bottom: 30px;
@@ -72,12 +63,12 @@
             
             <div class="content">
                 <div class="title m-b-md">
-                    Your Grade Result 
+                    Display Information
                 </div>
 
                 <div class="result">
-                    <p> Your score is {{ $yourScore }} </p>
-                    <p> Your letter grade is {{ $letterGrade }} </p>
+                    <p> Your email is: {{$email}}  </p>
+                    <p> Your password is: {{$pass}} </p>
                 </div>  
 
             </div>
