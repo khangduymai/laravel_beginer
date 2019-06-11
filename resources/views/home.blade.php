@@ -72,20 +72,24 @@
         <div class="flex-center position-ref full-height">
             
             <div class="content">
-                <div class="title m-b-md">
-                    Welcome to grading calculating 
-                </div>
+                <form action='/checkGrade' method='GET'>
+                    <div class="title m-b-md">
+                        Welcome to grading calculating 
+                    </div>
 
-                <div class="input">
-                    Enter your grade: <input type="number" name="grade"><br>
-                </div>
+                    <div class="input">
+                        Enter your grade: <input type="number" name="grade"><br>
+                    </div>
 
 
-                <div class="links">
-                    <a href="/checkGrade">Click here to see your letter grade</a>
+                    <div class="links">
+                        <a href="/checkGrade">Click here to see your letter grade</a>
+                    </div>
 
-                </div>
+                    <input type='submit' name='submit'>
+                </form>
             </div>
+            
         </div>
     </body>
 </html>
