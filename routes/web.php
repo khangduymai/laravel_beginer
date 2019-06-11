@@ -11,6 +11,17 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/begin', function () {
     return view('welcome');
 });
+
+Route::view('/', 'home');
+
+Route::view('/about', 'about');
+
+Route::view('/contact', 'contact');
+
+Route::view('/customer', 'customer');
+
+
+
