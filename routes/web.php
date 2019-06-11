@@ -23,4 +23,4 @@ Route::get('/home', function(){
 
 Route::get('/checkGrade/{grade}', 'GradeController@checkGrade');
 
-Route::get('/checkGrade', 'GradeController@checkGradeSubmit');
+Route::post('/checkGrade', 'GradeController@checkGradeSubmit');

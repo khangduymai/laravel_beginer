@@ -29,8 +29,23 @@ class GradeController extends Controller
 
     public function checkGradeSubmit(Request $request) {
         // dd($request);
-        $grade = $request->query('grade');
 
+        /*
+        using $reques->query for GET method
+        $grade = $request->query('grade');
+        */
+
+        /*
+        using $reques->input for POST method
+        */
+        $grade = $request->input('grade');
+
+        if (!is_numeric($grade)) {
+            return view('error', 
+                ['message' => 'Grade must be number.']
+            );
+        }
+        
         if($grade >= 90){
             $letter = 'A';
         }
