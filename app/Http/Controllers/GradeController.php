@@ -20,11 +20,9 @@ class GradeController extends Controller
             $letter = 'F';
         }
 
-        return view('grade/letterGrade',
-        [
-            'letterGrade' => $letter,
-            'yourScore' => $grade
-        ]);
-
+      return response()->json([
+          'grade' => $grade,
+          'letter' => $letter
+      ]);
     }
 }

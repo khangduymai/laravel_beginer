@@ -11,16 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+
+Route::get('/grading', function(){
+    return view('grade');
 });
 
-Route::get('/home', function(){
-    return view('home');
-});
 
 
 
-Route::get('/checkGrade/{grade}', 'GradeController@checkGrade');
 
 

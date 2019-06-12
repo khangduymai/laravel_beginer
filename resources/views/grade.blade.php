@@ -62,25 +62,59 @@
                 margin-bottom: 30px;
             }
 
-            .result {
+            .input{
                 font-size: 40px;
+                margin-bottom: 30px;
             }
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            
+        <div class="flex-center position-ref full-height">    
             <div class="content">
                 <div class="title m-b-md">
-                    Your Grade Result 
+                    Welcome to grading calculating 
+                </div>
+                <!--
+                <div class="input">
+                    Enter your name: <input type="text" name="name" id="name-input"><br>
+                </div>
+                -->
+
+                <div class="input">
+                    Enter your grade: <input type="number" name="grade" id="grade-input"><br>
                 </div>
 
-                <div class="result">
-                    <p> Your score is {{ $yourScore }} </p>
-                    <p> Your letter grade is {{ $letterGrade }} </p>
-                </div>  
-
+                <div class="display">
+                    <p id='gradeDisplay-input'></p>
+                </div>
             </div>
         </div>
+
+         <script>
+            document.getElementById("grade-input").addEventListener("change", loadGrade);
+            
+            function loadGrade() {
+                grade = document.getElementById("grade-input").value;
+
+                var request = new XMLHttpRequest();
+
+                //  call back
+                request.onreadystatechange = function() { // then this line run after request.send
+                    if (this.readyState == 4 && this.status == 200) { // check if condition
+
+                        var jsonResponse = JSON.parse(this.responseText);
+
+                         //console.log('Response text: ' + this.responseText);
+                        // console.log('Json Response: '); console.log(jsonResponse);
+                       
+
+                        document.getElementById("gradeDisplay-input").innerHTML = 'Your letter grade is: ' + jsonResponse.letter;
+                    } 
+                };
+
+                request.open("GET", "/api/checkGrade/" + grade, true); // this line run last
+                request.send(); //This code line run first
+            }
+        </script>
     </body>
 </html>
