@@ -24,8 +24,10 @@ class BookController extends Controller
     }
     
     public function getBook(int $id) {
-        $book = $this->generateBooks()[$id];
-        
-        return response()->json($book->toArray());
+        $books = $this->generateBooks();
+        if ($id < 0 || $id > count($books)) {
+            return response()->json(['message' => 'Record not found'], 404);
+        }
+        return response()->json($books[$id]->toArray());
     }
 }

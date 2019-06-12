@@ -62,7 +62,7 @@
                     Book
                 </div>
 
-                <input type='number' placeholder='number' id='book-id-input'>
+                <input type='number' placeholder='Please enter book ID' id='book-id-input'>
 
                 <p id='book-id'></p>
                 <p id='title'></p>
@@ -89,7 +89,8 @@
                         document.getElementById("book-id").innerHTML = 'Book ID: ' + jsonResponse.id;
                         document.getElementById("title").innerHTML = 'Book Title: ' + jsonResponse.title;
                         document.getElementById("author").innerHTML = 'Book Author: ' + jsonResponse.author;
-                    } else {
+                    } 
+                    else if (this.status == 500 || this.status == 404) {
                         document.getElementById("book-id").innerHTML = 'ERROR - not found';
                         document.getElementById("title").innerHTML = '';
                         document.getElementById("author").innerHTML = '';
