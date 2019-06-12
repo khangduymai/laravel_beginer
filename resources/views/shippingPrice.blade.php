@@ -34,12 +34,7 @@
                 position: relative;
             }
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
+            
             .content {
                 text-align: center;
             }
@@ -48,15 +43,7 @@
                 font-size: 84px;
             }
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
+        
 
             .m-b-md {
                 margin-bottom: 30px;
@@ -76,8 +63,18 @@
                 </div>
 
                 <div class="result">
-                    <p> Your score is {{ $yourScore }} </p>
-                    <p> Your letter grade is {{ $letterGrade }} </p>
+                    <p> Your name is: {{ $name }} </p>
+                    <p> Your package weight is: {{ $weight }} </p>
+                    <p> Special services: </p>
+                    <ul>
+                        
+                        @foreach($options as $option)
+                             <li> {{$option}}</li>
+                        @endforeach
+                
+                    </ul>
+                    
+                   
                 </div>  
 
             </div>

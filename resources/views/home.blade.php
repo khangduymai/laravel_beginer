@@ -4,10 +4,13 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Shipping Program</title>
 
+        
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+
+       
 
         <!-- Styles -->
         <style>
@@ -48,15 +51,7 @@
                 font-size: 84px;
             }
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
+           
 
             .m-b-md {
                 margin-bottom: 30px;
@@ -66,6 +61,11 @@
                 font-size: 40px;
                 margin-bottom: 30px;
             }
+
+            .form-check-label{
+                font-size: 25px;
+            }
+
         </style>
     </head>
     <body>
@@ -73,18 +73,35 @@
             
             <div class="content">
                 <div class="title m-b-md">
-                    Welcome to grading calculating 
+                    Welcome to Shipping Program
                 </div>
 
                 <div class="input">
-                    Enter your grade: <input type="number" name="grade"><br>
+                    <form action="/shippingPrice" method="GET">
+                        <div class="form-group">
+                            <label for="CustomerName">Customer Name</label>
+                            <input type="text" class="form-control" name="customerName" id="CustomerName">
+                        </div>
+                        <div class="form-group">
+                            <label for="weight">Package Weight:</label>
+                            <input type="text" class="form-control" name="weight" id="weight">
+                        </div>
+                        <h2>Options</h2>
+                        <div class="form-group form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" name="options[]" type="checkbox" value="Overnight Shipping"> Overnight Shipping
+                            </label>
+                            <label class="form-check-label">
+                                <input class="form-check-input" name="options[]" type="checkbox" value="Two-day Shipping"> Two-day Shipping
+                            </label>
+                            <label class="form-check-label">
+                                <input class="form-check-input" name="options[]" type="checkbox" value="Insurrane"> Insurrane
+                            </label>
+                        </div>
+                        <input type="submit" name="submit" value="Click to submit" class="btn btn-primary btn-group-lg">
+                    </form>
                 </div>
 
-
-                <div class="links">
-                    <a href="/checkGrade">Click here to see your letter grade</a>
-
-                </div>
             </div>
         </div>
     </body>

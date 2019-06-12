@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Route::get('/home', function(){
     return view('home');
@@ -21,6 +19,6 @@ Route::get('/home', function(){
 
 
 
-Route::get('/checkGrade/{grade}', 'GradeController@checkGrade');
+Route::get('/shippingPrice', 'ShippingController@processData');
 
 
