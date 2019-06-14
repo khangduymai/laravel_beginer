@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::get('/viewBook', function () {
     return view('book');
 });
+
+Route::get('/studentInfo', function(){
+    return view('student');
+});
