@@ -62,7 +62,7 @@
                     Student Information
                 </div>
 
-                <input type='number' placeholder='Please enter student ID' id='student-id-input'>
+                <input type='number' placeholder='Student ID' id='student-id-input'>
 
                 <p id='student-id'></p>
                 <p id='student-name'></p>
@@ -120,6 +120,8 @@
                         tableString += '</tr>';
                     }
                     tableString += '</table>';
+
+                    console.log(tableString);
 
                     document.getElementById("student-projects").innerHTML = tableString;
 
