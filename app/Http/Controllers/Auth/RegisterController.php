@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\AlternativeId;
 
 class RegisterController extends Controller
 {
@@ -63,13 +64,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        //Create User
+        $user = User::create([
             'email' => $data['email'],
-            'first_name' => $data['first_name'],
-            'middle_name' => $data['middle_name'],
-            'last_name' => $data['last_name'],
-            
-            //'password' => Hash::make($data['password']),
+            'first_name' => $data['first-name'],
+            'middle_name' => $data['middle-name'],
+            'last_name' => $data['last-name'],
         ]);
+
+        // Create unique id based on user id
+        $uniqueId = 'MS' . str_pad($user->id, 8, '0', STR_PAD_LEFT);
+
+        AlternativeId::create([
+            'unique_id' => $uniqueId,
+            'user_id' => $user->id
+        ]);
+
+        return $user;
     }
 }

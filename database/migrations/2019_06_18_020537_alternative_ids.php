@@ -13,7 +13,13 @@ class AlternativeIds extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('altertive_ids', function (Blueprint $table) {
+            $table->string('unique_id', 10)->primary();
+            $table->bigInteger('user_id');
+            $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
+        });
     }
 
     /**
