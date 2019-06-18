@@ -13,7 +13,7 @@ class AlternativeIds extends Migration
      */
     public function up()
     {
-        Schema::create('altertive_ids', function (Blueprint $table) {
+        Schema::create('alternative_ids', function (Blueprint $table) {
             $table->string('unique_id', 10)->primary();
             $table->bigInteger('user_id');
             $table->timestamps();
@@ -29,6 +29,6 @@ class AlternativeIds extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists( 'alternative_ids');
     }
 }
