@@ -16,5 +16,11 @@ Route::get('/', function () {
 });
 
 
-//Route for practicing migrations
+//Route for displaying all the project
 Route::get('/', 'ProjectController@index');
+
+//Route for storing data
+Route::post('/', 'ProjectController@store');
+
+//Route for create project page
+Route::get('/create', 'ProjectController@create');
