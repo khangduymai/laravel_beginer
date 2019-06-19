@@ -6,6 +6,7 @@
 </head>
 
 <body>
+    
     @foreach($projects as $project)
     <li>{{$project->project_name}}</li>
     @endforeach
