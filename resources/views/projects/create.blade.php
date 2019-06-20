@@ -10,8 +10,8 @@
 
     <h1>Create Simple Project</h1>
 
-    <form method="POST" action="/">
-            {{csrf_field()}}
+    <form method="POST" action="/projects">
+        {{csrf_field()}}
 
 
         <div>

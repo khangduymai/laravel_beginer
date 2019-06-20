@@ -11,16 +11,26 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
+route::resource('projects','ProjectController');
 
 //Route for displaying all the project
-Route::get('/', 'ProjectController@index');
+//Route::get('/projects', 'ProjectController@index');
+
+//Route for display create project page 
+//Route::get('/projects/create', 'ProjectController@create');
+
+//Route for displaying specific project
+//Route::get('/projects/{project}', 'ProjectController@show');
 
 //Route for storing data
-Route::post('/', 'ProjectController@store');
+//Route::post('/projects', 'ProjectController@store');
 
-//Route for create project page
-Route::get('/create', 'ProjectController@create');
+//Route for display edit specific project
+//Route::get('/projects/{project}/edit', 'ProjectController@edit');
+
+//Route for patching (update) specific project
+//Route::patch('/projects/{project}', 'ProjectController@update');
+
+//Route for destroy (delete) specific project
+//Route::delete('/projects/{project}', 'ProjectController@destroy');
