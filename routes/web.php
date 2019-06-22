@@ -14,6 +14,10 @@
 
 route::resource('projects','ProjectController');
 
+route::post('/projects/{project}/tasks', 'ProjectTasksController@store');
+
+route::patch('tasks/{task}', 'ProjectTasksController@update');
+
 //Route for displaying all the project
 //Route::get('/projects', 'ProjectController@index');
 
