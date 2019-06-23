@@ -46,4 +46,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(TimeTracking::class);
     }
+
+    public function alternativeId()
+    {
+        return $this->hasOne(AlternativeId::class);
+    }
 }
