@@ -48,6 +48,24 @@ class LoginController extends Controller
     {
         $this->validateLogin($request);
 
+         if ($request->input('email')) {
+            $user = User::where('email', $request->input('email'))->first();
+
+            $this->field = 'email';
+        } elseif ($request->input('phone')) {
+            $user = User::where('phone', $request->input('phone'))->first();
+
+            $this->field = 'phone';
+        } elseif ($request->input('unique-id')) {
+            $user = User::whereHas('alternativeId', 
+                        function($query) use ($request) {
+                            $query->where('unique_id', $request->input('unique-id')); 
+                        })
+                        ->first();
+
+            $this->field = 'unique-id';
+        }    
+
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
         // the login attempts for this application. We'll key this by the username and
         // the IP address of the client making these requests into this application.
@@ -60,28 +78,10 @@ class LoginController extends Controller
             return $this->sendLockoutResponse($request);
         }
 
-        if ($request->input('email')) {
-            $user = User::where('email', $request->input('email'))->first();
-            
-            $field = 'email';
-        } elseif ($request->input('phone')) {
-            $user = User::where('phone', $request->input('phone'))->first();
-
-            $field = 'phone';
-        } elseif ($request->input('unique-id')) {
-            $user = User::whereHas('alternativeId', 
-                        function($query) use ($request) {
-                            $query->where('unique_id', $request->input('unique-id')); 
-                        })
-                        ->first();
-
-            $field = 'unique-id';
-        }       
-
         // Failed login
         if (empty($user)) {
             $this->incrementLoginAttempts($request);
-            return $this->sendFailedLoginResponse($request, $field);
+            return $this->sendFailedLoginResponse($request);
         }
 
         // Success login
@@ -89,11 +89,14 @@ class LoginController extends Controller
         return $this->sendLoginResponse($request);
     }
 
-    protected function sendFailedLoginResponse(Request $request, string $field)
+    public function username()
     {
-        throw ValidationException::withMessages([
-            $field => [trans('auth.failed')],
-        ]);
+        return $this->field;
+    }
+
+    protected function throttleKey(Request $request)
+    {
+        return $request->ip();
     }
 
     protected function validateLogin(Request $request)
