@@ -16,8 +16,8 @@ class CreateTimeTrackingsTable extends Migration
         Schema::create('time_trackings', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('user_id');
-            $table->dateTime('time_in');
-            $table->dateTime('time_out')->nullable();
+            $table->integer('time_in');
+            $table->integer('time_out')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

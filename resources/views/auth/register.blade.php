@@ -65,16 +65,30 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="middle-name" class="col-md-4 col-form-label text-md-right">Middle Name</label>
+                            <label for="phone" class="col-md-4 col-form-label text-md-right">Phone</label>
 
                             <div class="col-md-6">
-                                <input id="middle-name" type="middle-name" class="form-control @error('middle-name') is-invalid @enderror" name="middle-name" value="{{ old('middle-name') }}" autocomplete="middle-name">
+                                <input id="phone" type="tel" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" autocomplete="phone">
 
-                                @error('middle-name')
+                                @error('phone')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="role-select" class="col-md-4 col-form-label text-md-right">Role: </label>
+
+                            <div class="col-md-6">
+                                <select class="form-control" name="role-select" id="role-select">
+
+                                    @foreach($roles as $role)
+                                    <option value='{{ Crypt::encryptString($role->id) }}'>{{ $role->description }}</option>
+                                    @endforeach
+
+                                </select>
                             </div>
                         </div>
 
