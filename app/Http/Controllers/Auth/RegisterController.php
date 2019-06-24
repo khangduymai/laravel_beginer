@@ -112,10 +112,7 @@ class RegisterController extends Controller
 
         event(new Registered($user = $this->create($request->all())));
 
-        $this->guard()->login($user);
-
-        return $this->registered($request, $user)
-            ?: redirect($this->redirectPath());
+        return view('time_tracking.check_in');
     }
 
     private function validateRole(array $data): bool

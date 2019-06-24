@@ -42,10 +42,20 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
       
+                        @if (Route::has('show-check-in'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('show-check-in') }}">{{ __('Check In') }}</a>
+                            </li>
+                        @endif
+                        @if (Route::has('show-check-out'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('show-check-out') }}">{{ __('Check Out') }}</a>
+                            </li>
+                        @endif
                         @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            </li>
                         @endif
 
                     </ul>

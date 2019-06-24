@@ -34,6 +34,7 @@
                         <td>{{ $loginTime }}</td>
                         <td> 
                             <form method="POST" action="{{ route('check-out', $user->id) }}">
+                                @csrf
                                 <button type="submit" class="btn btn-primary">
                                         Check Out
                                 </button>

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('time_tracking.base')
 
 @section('content')
 <div class="container">

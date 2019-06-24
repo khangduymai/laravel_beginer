@@ -35,6 +35,23 @@ class TimeTrackingController extends Controller
        return view('time_tracking.check_out', ['users' => $users]);
     }
 
+    public function checkOut(int $userId) {
+        $user = User::with('timeTrackings')
+                    ->whereHas('timeTrackings', function($query) {
+                        $query->whereNull('time_out');
+                    })
+                    ->find($userId);
+
+        foreach($user->timeTrackings as $timeTracking) {
+            $now = new \DateTime('now');
+            $epoch = $now->format('U');
+            $timeTracking->time_out = $epoch;
+            $timeTracking->save();
+        }
+
+        return view('time_tracking.check_in');
+    }
+
     private function startTimeTracking(User $user): TimeTracking 
     {
         //dd($user->timeTrackings()->whereNull('time_out')->exists());

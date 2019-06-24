@@ -19,8 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/check-in', 'TimeTrackingController@showCheckIn');
+Route::get('/check-in', 'TimeTrackingController@showCheckIn')->name('show-check-in');
 Route::post('/check-in', 'TimeTrackingController@checkIn')->name('check-in');
 
-Route::get('/check-out', 'TimeTrackingController@showCheckOut');
+Route::get('/check-out', 'TimeTrackingController@showCheckOut')->name('show-check-out');
 Route::post('/check-out/{userId}', 'TimeTrackingController@checkOut')->name('check-out');
