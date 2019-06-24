@@ -84,7 +84,7 @@
                         <h5 class="card-title">Unique Id: {{ $user->alternativeId->unique_id }}</h5>
                         <p class="card-text">Name: {{ $user->first_name . ' ' . $user->last_name }}</p>
                         <p class="card-text">Login at: {{ $loginTime }}</p>
-                        <a href="/checkin" class="btn btn-primary">Done</a>
+                        <a href="/check-in" class="btn btn-primary">Done</a>
                     </div>
                 </div>
             

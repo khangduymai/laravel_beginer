@@ -9,11 +9,11 @@ use Illuminate\Validation\ValidationException;
 
 class TimeTrackingController extends Controller
 {
-    public function showCheckin() {
-        return view('time_tracking.checkin');
+    public function showCheckIn() {
+        return view('time_tracking.check_in');
     }
 
-    public function checkin(Request $request) {
+    public function checkIn(Request $request) {
         $user = $this->getUser($request);
 
         if (empty($user)) {
@@ -25,8 +25,27 @@ class TimeTrackingController extends Controller
         return view('time_tracking.welcome', ['user' => $user, 'timeTracking' => $timeTracking]);
     }
 
+    public function showCheckOut(Request $request) {
+       $users = User::with('timeTrackings')
+                    ->whereHas('timeTrackings', function($query) {
+                        $query->whereNull('time_out');
+                    })
+                    ->get();
+
+       return view('time_tracking.check_out', ['users' => $users]);
+    }
+
     private function startTimeTracking(User $user): TimeTracking 
     {
+        //dd($user->timeTrackings()->whereNull('time_out')->exists());
+
+        $isTimeIn = $user->timeTrackings()->whereNull('time_out')->exists();
+
+        if($isTimeIn){
+            $this->sendCustomValidationErrors(['You already login']);
+        }
+
+        // Get epoch timestamp
         $now = new \DateTime('now');
         $epoch = $now->format('U');
 
@@ -58,14 +77,17 @@ class TimeTrackingController extends Controller
    
             $this->field = 'unique-id';
         } else {
-            $this->field = 'email';
-            return null;
+            $this->sendCustomValidationErrors(['Please provide email/phone/unique id.']);
         }
 
         $user = $userQuery->first();
 
         return empty($user) ? null : $user;
     } 
+
+    private function sendCustomValidationErrors(array $messages) {
+        throw ValidationException::withMessages($messages);
+    }
 
     protected function sendFailedLoginResponse(Request $request)
     {
