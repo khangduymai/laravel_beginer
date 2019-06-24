@@ -48,7 +48,7 @@ class LoginController extends Controller
     {
         $this->validateLogin($request);
 
-         if ($request->input('email')) {
+        if ($request->input('email')) {
             $user = User::where('email', $request->input('email'))->first();
 
             $this->field = 'email';

@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class TimeTracking extends Model
 {
     protected $fillable = [
-        'user_id', 'time_in'
+        'user_id', 'time_in', 'time_out'
     ];
 }
